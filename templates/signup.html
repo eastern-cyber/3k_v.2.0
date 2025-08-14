@@ -33,9 +33,36 @@
 
         <main>
             <div class="max-w-[360px] mx-auto pt-16">
-                <h1 class="text-center pb-4">Log in</h1>
+                <h1 class="text-center pb-4">Sign up</h1>
                 <div class="mb-10">
                     <form action="">
+                        <p class="font-medium text-sm mb-1">กรุณาระบุ วัน เดือน ปี เกิด</p>
+                        <div class="grid grid-cols-[1fr_1fr_1fr] gap-2 mb-1">
+                            <div class="bg-neutral-100 px-3 h-11 flex items-center justify-between rounded-sm cursor-pointer">
+                                <p class="bg-neutral-100 select-none">วัน</p>
+                                <div class="w-4 h-4">
+                                    <svg viewBox="0 0 48 48">
+                                        <path d="M25.5187 35.2284C24.7205 36.1596 23.2798 36.1596 22.4816 35.2284L8.83008 19.3016C7.71807 18.0042 8.63988 16 10.3486 16H37.6517C39.3604 16 40.2822 18.0042 39.1702 19.3016L25.5187 35.2284Z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="bg-neutral-100 px-3 h-11 flex items-center justify-between rounded-sm cursor-pointer">
+                                <p class="bg-neutral-100 select-none">เดือน</p>
+                                <div class="w-4 h-4">
+                                    <svg viewBox="0 0 48 48">
+                                        <path d="M25.5187 35.2284C24.7205 36.1596 23.2798 36.1596 22.4816 35.2284L8.83008 19.3016C7.71807 18.0042 8.63988 16 10.3486 16H37.6517C39.3604 16 40.2822 18.0042 39.1702 19.3016L25.5187 35.2284Z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="bg-neutral-100 px-3 h-11 flex items-center justify-between rounded-sm cursor-pointer">
+                                <p class="bg-neutral-100 select-none">ปี</p>
+                                <div class="w-4 h-4">
+                                    <svg viewBox="0 0 48 48">
+                                        <path d="M25.5187 35.2284C24.7205 36.1596 23.2798 36.1596 22.4816 35.2284L8.83008 19.3016C7.71807 18.0042 8.63988 16 10.3486 16H37.6517C39.3604 16 40.2822 18.0042 39.1702 19.3016L25.5187 35.2284Z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
                         <p class="font-medium text-sm mb-1">Email or username</p>
                         <div class="flex flex-col gap-2 mb-2">
                             <input name="email" type="text" placeholder="Email or username" class="input-field" value="">
@@ -67,8 +94,11 @@
         </main>
 
         <footer>
+            <div class="max-w-sm mx-auto pt-8 pb-20 text-center text-neutral-400 text-xs">
+                <p>By continuing, you agree to Kok Kok Kok's <a href="" class="text-black hover:underline">Terms of Service</a> and confirm that you have read our <a href="" class="text-black hover:underline">Privacy Policy</a>.</p>
+            </div>
             <div class="text-center p-5 border-t border-neutral-300">
-                <p>ยังไม่มีบัญชีผู้ใช้งาน? <a href="./signup.html" class="text-rose-500 font-medium hover:underline">Sign up</a></p>
+                <p>มีบัญชีผู้ใช้งานแล้ว? <a href="./login.html" class="text-rose-500 font-medium hover:underline">Log in</a></p>
             </div>
             <div class="bg-black text-neutral-400 h-21 flex items-center justify-end px-15 text-sm">
                 <p>&copy; 2025 <a href="https://dfi.fund" class="hover:underline">DProject</a> - Kok Kok Kok</p>
