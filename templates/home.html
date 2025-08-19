@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" x-date="{ darkMode: false }">
+<html lang="en" x-data="{ darkMode: false }">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,7 +39,7 @@
             @apply ml-3 font-medium hidden lg:block whitespace-nowrap transition duration-350
         }
         .button-rounded {
-            @apply w-full h-10 rounded-full hover:bg-neutral-100 flex items-center justify-between px-2
+            @apply w-full h-10 rounded-full hover:bg-neutral-100 flex items-center justify-between px-2 cursor-pointer
         }
         .button-article {
             @apply rounded-full size-13 bg-neutral-100 hover:bg-neutral-200 flex items-center justify-center transition-all duration-300
@@ -58,8 +58,17 @@
     </style>
     <link href="/static/css/style.css" rel="stylesheet">
 </head>
-<body x-data="{ showDrawer: false,
+<body class="dark:bg-black dark:text-white"
+        x-data="{ showDrawer: false,
                 searchQuery: '',
+                showSearch: false,
+                showMore: false,
+                showColorModes: false,
+                resetAll() {
+                    this.showSearch = false;
+                    this.showMore = false;
+                    this.showColorModes = false;
+                }
             }">
     
 <div class="min-h-[100dvh]">
@@ -72,7 +81,7 @@
                 </a>
             </div>
             <div class="px-4">
-                <button @click="showDrawer = !showDrawer" id="search" class="w-full h-10 bg-neutral-100 rounded-full pl-2.5 flex items-center cursor-pointer">
+                <button id="search" @click="showDrawer = !showDrawer; showSearch = true" class="w-full h-10 bg-neutral-100 rounded-full pl-2.5 flex items-center cursor-pointer">
                     <div class="size-5 flex-shrink-0">
                         <svg viewBox="0 0 48 48">
                             <path d="M21.83 7.5a14.34 14.34 0 1 1 0 28.68 14.34 14.34 0 0 1 0-28.68Zm0-4a18.33 18.33 0 1 0 11.48 32.64l8.9 8.9a1 1 0 0 0 1.42 0l1.4-1.41a1 1 0 0 0 0-1.42l-8.89-8.9A18.34 18.34 0 0 0 21.83 3.5Z"></path>
@@ -167,7 +176,7 @@
                             โปรไฟล์
                         </span>
                     </button>
-                    <button id="more" class="button-nav">
+                    <button id="more" @click="showDrawer = !showDrawer; showMore = true" class="button-nav">
                         <div class="size-8 flex-shrink-0">
                             <svg class="scale-75" viewBox="0 0 48 48">
                                 <path d="M5 24a4 4 0 1 1 8 0 4 4 0 0 1-8 0Zm15 0a4 4 0 1 1 8 0 4 4 0 0 1-8 0Zm15 0a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z"></path>
@@ -183,7 +192,7 @@
                 </div>
             </div>
         </nav>
-        <side-drawer @click.outside="showDrawer = false" x-show="showDrawer" x-cloak class="fixed left-18 top-0 w-80 h-full border-l border-r border-neutral-200 bg-white"
+        <side-drawer @click.outside="showDrawer = false; resetAll()" x-show="showDrawer" x-cloak class="fixed left-18 top-0 w-80 h-full border-l border-r border-neutral-200 bg-white"
                         x-transition:enter="transition duration-350 ease-out"
                         x-transition:enter-start="-translate-x-full opacity-0"
                         x-transition:enter-end="-translate-x-0 opacity-100"
@@ -191,8 +200,8 @@
                         x-transition:leave-start="translate-x-0 opacity-100"
                         x-transition:leave-end="-translate-x-full opacity-0"
                         >
-            <div class="relative px-2 py-5">
-                <button @click="showDrawer = false" class="absolute right-4 top-6 size-7 bg-neutral-100 hover:bg-neutral-200 rounded-full flex items-center justify-center">
+            <div x-show="showSearch" class="relative px-2 py-5">
+                <button @click="showDrawer = false; resetAll()" class="absolute right-4 top-6 size-7 bg-neutral-100 hover:bg-neutral-200 rounded-full flex items-center justify-center cursor-pointer">
                     <div class="size-4">
                         <svg viewBox="0 0 48 48">
                             <path d="M38.7 12.12a1 1 0 0 0 0-1.41l-1.4-1.42a1 1 0 0 0-1.42 0L24 21.17 12.12 9.3a1 1 0 0 0-1.41 0l-1.42 1.42a1 1 0 0 0 0 1.41L21.17 24 9.3 35.88a1 1 0 0 0 0 1.41l1.42 1.42a1 1 0 0 0 1.41 0L24 26.83 35.88 38.7a1 1 0 0 0 1.41 0l1.42-1.42a1 1 0 0 0 0-1.41L26.83 24 38.7 12.12Z"></path>
@@ -210,6 +219,72 @@
                         </div>
                     </button>
                 </div>
+            </div>
+            <div x-show="showMore" class="relative px-2 py-5">
+                <button @click="showDrawer = false; resetAll()" class="absolute right-4 top-6 size-7 bg-neutral-100 hover:bg-neutral-200 rounded-full flex items-center justify-center cursor-pointer">
+                    <div class="size-4">
+                        <svg viewBox="0 0 48 48">
+                            <path d="M38.7 12.12a1 1 0 0 0 0-1.41l-1.4-1.42a1 1 0 0 0-1.42 0L24 21.17 12.12 9.3a1 1 0 0 0-1.41 0l-1.42 1.42a1 1 0 0 0 0 1.41L21.17 24 9.3 35.88a1 1 0 0 0 0 1.41l1.42 1.42a1 1 0 0 0 1.41 0L24 26.83 35.88 38.7a1 1 0 0 0 1.41 0l1.42-1.42a1 1 0 0 0 0-1.41L26.83 24 38.7 12.12Z"></path>
+                        </svg>
+                    </div>
+                </button>
+                <h2 class="pl-2 mb-7">เพิ่มเติม</h2>
+                <ul class="flex flex-col gap-1">
+                    <li>
+                        <button @click="resetAll(); showColorModes = true" class="button-rounded">
+                            <span class="font-medium">โหมดกลางคืน</span>
+                            <div class="size-4 fill-neutral-400">
+                                <svg viewBox="0 0 48 48">
+                                    <path d="M28.74 24 15.08 10.33a1 1 0 0 1 0-1.41l1.84-1.84a1 1 0 0 1 1.41 0L34.54 23.3a1 1 0 0 1 0 1.42l-16.2 16.21a1 1 0 0 1-1.42 0l-1.84-1.84a1 1 0 0 1 0-1.41L28.74 24Z"></path>
+                                </svg>
+                            </div>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="button-rounded">
+                            <span class="font-medium">ตั้งค่า</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="button-rounded">
+                            <span class="font-medium">ล็อกเอ้าท์</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div x-show="showColorModes" class="relative px-2 py-5">
+                <div class="flex items-center mb-7 pl-2">
+                    <button @click="resetAll(); showMore = true" class="size-6 rounded-full bg-neutral-100 hover:bg-neutral-200 flex items-center justify-center cursor-pointer">
+                        <div class="size-3 fill-neutral-700">
+                            <svg viewBox="0 0 48 48">
+                                <path d="m19.26 24 13.66-13.67a1 1 0 0 0 0-1.41l-1.84-1.84a1 1 0 0 0-1.41 0L13.46 23.3a1 1 0 0 0 0 1.42l16.2 16.21a1 1 0 0 0 1.42 0l1.84-1.84a1 1 0 0 0 0-1.41L19.26 24Z"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <h2 class="pl-2">โหมดกลางคืน</h2>
+                </div>
+                <ul class="flex flex-col gap-1">
+                    <li>
+                        <button @click="darkMode = true" class="button-rounded">
+                            <span class="font-medium">โหมดกลางคืน</span>
+                            <div x-show="darkMode" class="size-3.5">
+                                <svg viewBox="0 0 48 48">
+                                    <path d="M43 6.08c.7.45 1.06.67 1.25.98.16.27.23.59.2.9-.03.36-.26.72-.7 1.43L23.06 42.14a3.5 3.5 0 0 1-5.63.39L4.89 27.62c-.54-.64-.81-.96-.9-1.32a1.5 1.5 0 0 1 .09-.92c.14-.33.46-.6 1.1-1.14l1.69-1.42c.64-.54.96-.81 1.31-.9.3-.06.63-.04.92.09.34.14.6.46 1.15 1.1l9.46 11.25 18.11-28.7c.45-.72.68-1.07.99-1.26.27-.16.59-.23.9-.2.36.03.71.25 1.43.7L43 6.08Z"></path>
+                                </svg>
+                            </div>
+                        </button>
+                    </li>
+                    <li>
+                        <button @click="darkMode = false" class="button-rounded">
+                            <span class="font-medium">โหมดกลางวัน</span>
+                            <div x-show="!darkMode" class="size-3.5">
+                                <svg viewBox="0 0 48 48">
+                                    <path d="M43 6.08c.7.45 1.06.67 1.25.98.16.27.23.59.2.9-.03.36-.26.72-.7 1.43L23.06 42.14a3.5 3.5 0 0 1-5.63.39L4.89 27.62c-.54-.64-.81-.96-.9-1.32a1.5 1.5 0 0 1 .09-.92c.14-.33.46-.6 1.1-1.14l1.69-1.42c.64-.54.96-.81 1.31-.9.3-.06.63-.04.92.09.34.14.6.46 1.15 1.1l9.46 11.25 18.11-28.7c.45-.72.68-1.07.99-1.26.27-.16.59-.23.9-.2.36.03.71.25 1.43.7L43 6.08Z"></path>
+                                </svg>
+                            </div>
+                        </button>
+                    </li>
+                </ul>
             </div>
         </side-drawer>
     </aside>
