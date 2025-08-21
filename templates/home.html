@@ -58,7 +58,7 @@
     </style>
     <link href="/static/css/style.css" rel="stylesheet">
 </head>
-<body class="dark:bg-black dark:text-white"
+<body class="dark:bg-white dark:text-black"
         x-data="{ showDrawer: false,
                 searchQuery: '',
                 showSearch: false,
@@ -72,7 +72,7 @@
             }">
     
 <div class="min-h-[100dvh]">
-    <aside class="z-20 fixed h-screen w-18 lg:w-74 border-r border-neutral-200 lg:border-none transition-all duration-350 ease-in-out" :class="{ '!w-18': showDrawer }">
+    <aside class="z-20 fixed h-screen w-18 lg:w-60 border-r border-neutral-200 lg:border-none transition-all duration-350 ease-in-out" :class="{ '!w-18': showDrawer }">
         <nav class="relative h-full bg-white z-10">
             <div id="logo" class="pl-4.5 pt-5 mb-3 w-max h-18">
                 <a href="./index.html">
@@ -92,17 +92,17 @@
                     </span>
                 </button>
                 <div class="flex flex-col gap-1.5 py-3">
-                    <button id="home" class="button-nav">
+                    <button id="home" @click="window.location.href ='./home.html'" class="button-nav">
                         <div class="size-8 flex-shrink-0 fill-rose-500">
                             <svg viewBox="0 0 48 48">
                                 <path d="M24.9505 7.84001C24.3975 7.38666 23.6014 7.38666 23.0485 7.84003L6.94846 21.04C6.45839 21.4418 6.2737 22.1083 6.48706 22.705C6.70041 23.3017 7.26576 23.7 7.89949 23.7H10.2311L11.4232 36.7278C11.5409 38.0149 12.6203 39 13.9128 39H21.5C22.0523 39 22.5 38.5523 22.5 38V28.3153C22.5 27.763 22.9477 27.3153 23.5 27.3153H24.5C25.0523 27.3153 25.5 27.763 25.5 28.3153V38C25.5 38.5523 25.9477 39 26.5 39H34.0874C35.3798 39 36.4592 38.0149 36.577 36.7278L37.7691 23.7H40.1001C40.7338 23.7 41.2992 23.3017 41.5125 22.705C41.7259 22.1082 41.5412 21.4418 41.0511 21.04L24.9505 7.84001Z"></path>
                             </svg>
                         </div>
-                        <span class="text-black" :class="{ '!opacity-0 pointer-events-none' : showDrawer }">
+                        <span class="text-rose-500" :class="{ '!opacity-0 pointer-events-none' : showDrawer }">
                             หน้าแรก
                         </span>
                     </button>
-                    <button id="explore" class="button-nav">
+                    <button id="explore" @click="window.location.href ='./explore.html'" class="button-nav">
                         <div class="size-8 flex-shrink-0">
                             <svg viewBox="0 0 48 48">
                                 <path d="M24 37.4a13.4 13.4 0 1 0 0-26.8 13.4 13.4 0 0 0 0 26.8ZM40.5 24a16.5 16.5 0 1 1-33 0 16.5 16.5 0 0 1 33 0Z"></path>
@@ -294,22 +294,17 @@
 
                 <img src="../media/robot.jpg" class="aspect-[9/16] rounded-2xl object-cover">
 
-                <article-info class="flex flex-col absolute bottom-0 left-0 right-0">
-                    <div class="mt-auto p-5 text-white z-10"> <!-- Content div -->
-                    </div>
-                    <div class="w-full h-64 bg-gradient-to-t from-black to-transparent opacity-60 rounded-b-2xl"></div>
-                </article-info>
-                <article-info class="flex absolute bottom-0 left-0 right-0">
-                    <div class="mt-auto p-5 text-white z-10">
+                <article-info class="absolute bottom-0 left-0 right-0">
+                    <div class="absolute bottom-0 p-5 text-white z-10">            
                         <a href="" class="hover:underline">mac.paramee</a>
                         <div class="mt-1">
                             <a href="" class="hover:underline">#robot</a>
                         </div>
                     </div>
-                    <div class="h-64 bg-gradient-to-t from-black to-transparent opacity-60 rounded-b-2xl"></div>
+                    <div class="w-full h-64 bg-gradient-to-t from-black to-transparent opacity-60 rounded-b-2xl"></div>
                 </article-info>
 
-                <article-buttons class="block absolute -right-17 bottom-0 flex flex-col gap-2">
+                <article-buttons class="absolute -right-17 bottom-0 flex flex-col gap-2">
                     <button id="author" class="relative cursor-pointer flex justify-center mb-4">
                         <div class="rounded-full size-13 bg-neutral-100 overflow-hidden">
                             <img src="../media/avatar.png" class="w-full h-full object-center object-cover">
